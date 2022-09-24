@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceX</title>
+</head>
+<body>
+    <h2 style="text-align:center;"><u>Welcome to SpaceX New Launch</u></h2>
+    <h2 style="text-align:left;"><u>Please fill appropriate information</u></h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        {% for field in form %}
+            <p>
+                {{field.label_tag}}{{field}}
+            </p>
+        {% endfor %}
+        <button type="submit" value="submit">Submit</button>
+    </form>
+    <h2 style="text-align:left;"><u>Information Stored</u></h2>
+    {% if stu %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Password</th>
+                <th scope="col">Field</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for i in stu %}
+                <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Password}}</td>
+                    <td>{{i.Field}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
